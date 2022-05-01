@@ -622,11 +622,15 @@ def main():
 
 
     # Choose one of the following by uncommenting out the line
-    icmpHelperPing.sendPing("209.233.126.254")
-    # icmpHelperPing.sendPing("www.google.com")
+    # icmpHelperPing.sendPing("209.233.126.254")
+    # icmpHelperPing.sendPing("www.google.co.id")
     # icmpHelperPing.sendPing("oregonstate.edu")
     # icmpHelperPing.sendPing("gaia.cs.umass.edu")
-    # icmpHelperPing.traceRoute("oregonstate.edu")
+
+    icmpHelperPing.traceRoute("oregonstate.edu")
+    # icmpHelperPing.traceRoute("oliviarodrigo.com")
+    # icmpHelperPing.traceRoute("209.233.126.254")
+    # icmpHelperPing.traceRoute("gaia.cs.umass.edu")
 
 
 if __name__ == "__main__":
