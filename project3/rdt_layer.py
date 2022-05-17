@@ -4,6 +4,8 @@
 # Date Modified: May 17, 2022
 # Description: Working with RDT to send text files
 
+# Code Adapted From:
+# https://github.com/hugoamaralsantana/RDT3.0-In-Python
 
 from segment import Segment
 
