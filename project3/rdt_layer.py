@@ -152,7 +152,7 @@ class RDTLayer(object):
             if dataChunk == "":
                 break
 
-            segmentSend.sendData(self.seqnum, dataChunk)
+            segmentSend.setData(self.seqnum, dataChunk)
             toCharSent += 4
             print("Sending the Segment: ", segmentSend.to_string())
 
@@ -208,13 +208,13 @@ class RDTLayer(object):
         # How will you get them back in order?
         # This is where a majority of your logic will be implemented
         # print('processReceive(): Complete this...')
-        if (length(listIncomingSegments) >= 1):
-            listIncomingSegments.sort(key = lambda self: self.seqnum)
-            for i in range(length(listIncomingSegments)):
+        if (len(listIncomingSegments) >= 1):
+            listIncomingSegments.sort(key = lambda self:self.seqnum)
+            for i in range(len(listIncomingSegments)):
                 recString += listIncomingSegments[i].payload
-                self.totalSize += length(recString)
+                self.totalSize += len(recString)
 
-        self.string += recString
+            self.string += recString
 
 
 
@@ -223,7 +223,7 @@ class RDTLayer(object):
         # ############################################################################################################ #
         # How do you respond to what you have received?
         # How can you tell data segments apart from ack segemnts?
-        print('processReceive(): Complete this...')
+        # print('processReceive(): Complete this...')
 
         # Somewhere in here you will be setting the contents of the ack segments to send.
         # The goal is to employ cumulative ack, just like TCP does...
