@@ -112,10 +112,10 @@ class RDTLayer(object):
         # ############################################################################################################ #
         # Identify the data that has been received...
 
-        print('getDataReceived(): Complete this...')
+        # print('getDataReceived(): Complete this...')
 
         # ############################################################################################################ #
-        return ""
+        return self.string
 
     # ################################################################################################################ #
     # processData()                                                                                                    #
@@ -198,13 +198,20 @@ class RDTLayer(object):
 
         # This call returns a list of incoming segments (see Segment class)...
         listIncomingSegments = self.receiveChannel.receive()
+        recString = ''
 
         # ############################################################################################################ #
         # What segments have been received?
         # How will you get them back in order?
         # This is where a majority of your logic will be implemented
-        print('processReceive(): Complete this...')
+        # print('processReceive(): Complete this...')
+        if (length(listIncomingSegments) >= 1):
+            listIncomingSegments.sort(key = lambda self: self.seqnum)
+            for i in range(length(listIncomingSegments)):
+                recString += listIncomingSegments[i].payload
+                self.totalSize += length(recString)
 
+        self.string += recString
 
 
 
