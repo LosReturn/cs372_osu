@@ -138,10 +138,13 @@ class RDTLayer(object):
     #                                                                                                                  #
     #                                                                                                                  #
     # ################################################################################################################ #
-    data = self.dataToSend
-    toCharSent = 0
+
     
     def processSend(self):
+
+        data = self.dataToSend
+        toCharSent = 0
+
         while True:
             segmentSend = Segment()
             dataChunk = data[self.seqnum:self.seqnum+4]
