@@ -1,11 +1,12 @@
 # Name: Dylan Mitchel Karambut
 # Project: 3 - Reliable Data Transmission (RDT)
 # Due Date: May 22, 2022
-# Date Modified: May 17, 2022
+# Date Modified: May 18, 2022
 # Description: Working with RDT to send text files
 
 # Code Adapted From:
 # https://github.com/hugoamaralsantana/RDT3.0-In-Python
+# https://edstem.org/us/courses/21453/discussion/1516434?answer=3413584
 
 from segment import Segment
 
@@ -66,6 +67,12 @@ class RDTLayer(object):
         seqnum = 0
         totalSize = 0
         checker = {}
+
+        # As of Suggestion on ed Discussion
+        # Solving the missing countSegmentTimeouts
+        # https://edstem.org/us/courses/21453/discussion/1516434?answer=3413584
+        self.timeIdle = 0
+        self.countSegmentTimeouts = 0
 
     # ################################################################################################################ #
     # setSendChannel()                                                                                                 #
@@ -213,6 +220,12 @@ class RDTLayer(object):
             for i in range(len(listIncomingSegments)):
                 recString += listIncomingSegments[i].payload
                 self.totalSize += len(recString)
+
+                if listIncomingSegments[i].acknum == -1:
+                    self.acknum = listIncomingSegments[i]
+                    ack = Segment()
+                    ack.setAck(self.acknum)
+                    self.sendChannel.send(ack)
 
             self.string += recString
 
